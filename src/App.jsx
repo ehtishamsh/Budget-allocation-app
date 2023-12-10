@@ -1,31 +1,38 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Context01 from "./components/React_Context_API/Profile";
-import Header from "./components/React_Context_API/Header";
-import Home from "./components/React_Context_API/Home";
-import Profile from "./components/React_Context_API/Profile";
-import Menu from "./components/React_Context_API/Menu";
-import { useState } from "react";
-import { createContext } from "react";
-
+import Header from "./components/React_Query/Header";
+import Home from "./components/React_Query/Home";
+import Profile from "./components/React_Query/Profile";
+import Menu from "./components/React_Query/Menu";
+import { QueryClient, QueryClientProvider } from "react-query";
 function App() {
-  const [userName, setUserName] = useState("Ehtisham");
+  const client = new QueryClient();
   return (
     <>
-      <AppContext.Provider value={{ userName, setUserName }}>
-        <Router>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="menu" element={<Menu />} />
-          </Routes>
-        </Router>
-      </AppContext.Provider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="menu" element={<Menu />} />
+        </Routes>
+      </Router>
+
+      {/* CONTEXT API CODE
+      import { useState } from "react";
+import { createContext } from "react"; */}
+      {/* const [userName, setUserName] = useState("Ehtisham"); */}
+      {/* <AppContext.Provider value={{ userName, setUserName }}>
+
+
+      {-----------------router code here------------------}
+
+
+      </AppContext.Provider> 
+      
+      export const AppContext = createContext();*/}
     </>
   );
 }
 
 export default App;
-
-export const AppContext = createContext();
